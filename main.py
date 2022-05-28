@@ -10,6 +10,25 @@ logger.addHandler(handler)
 intents = discord.Intents.default()
 intents.messages = True
 
+responses = {
+    "motivation" : ["**Where's your motivation?**",
+                    "**Show me your motivation!**",
+                    "**Now I'm motivated!**",
+                    "**Now I'm a little motivated!**"],
+    "bedtime" : ["**It's past your bedtime!**",
+                 "https://files.herma.moe/vergil/bedtime.jpg"],
+    "power" : ["**I've come to retrieve my power.\nYou can't handle it.**",
+               "**This is the power of Sparda.**",
+               "**I need more power!**",
+               "**My power shall be absolute!",
+               "**Power...**",
+               "**This...**\n**Is...**\n***Power!***"],
+    "challenge" : ["**You are not worthy as my opponent.**"],
+    "difficult" : ["**`Easy mode is now selectable.`**",
+                   "https://files.herma.moe/vergil/easymode.jpg"],
+    "storm" : ["***I AM THE STORM THAT IS APPROACHING!***"]
+}
+
 client = discord.Client(intents=intents)
 
 @client.event
