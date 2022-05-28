@@ -691,6 +691,12 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,visualstudio,visualstudiocode
+
+# Config files
+/config/token.txt
+/config/sql.json
+
+# PyCharm
 .idea/.gitignore
 .idea/discord.xml
 .idea/inspectionProfiles/
