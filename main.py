@@ -1,5 +1,6 @@
 import discord
 import logging
+from random import choice as choose
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -23,7 +24,7 @@ responses = {
                "**My power shall be absolute!",
                "**Power...**",
                "**This...**\n**Is...**\n***Power!***"],
-    "challenge" : ["**You are not worthy as my opponent.**"],
+    #"challenge" : ["**You are not worthy as my opponent.**"],
     "difficult" : ["**`Easy mode is now selectable.`**",
                    "https://files.herma.moe/vergil/easymode.jpg"],
     "storm" : ["***I AM THE STORM THAT IS APPROACHING!***"]
@@ -36,5 +37,28 @@ async def on_ready():
     print(f'Logged in successfully as {client.user}')
     client.activity = discord.Activity(type=discord.ActivityType.competing, name='the Qliphoth')
     await client.change_presence(activity=client.activity)
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if await multi_contains(message.content, ["motivation", "motivatiob", "motivatio", "motivated", "motive", "motiv"]):
+        await message.channel.send(choose(responses["motivation"]))
+    if await multi_contains(message.content, ["bedtime", "bedtim", "bed time", "bed", "bed tim", "sleep", "slep", "good night", "goodnight"]):
+        await message.channel.send(choose(responses["bedtime"]))
+    if await multi_contains(message.content, ["power", "powe",]):
+        await message.channel.send(choose(responses["power"]))
+    #if await multi_contains(message.content, ["challenge", "challege"]):
+    #    await message.channel.send(choose(responses["challenge"]))
+    if await multi_contains(message.content, ["difficult", "hard", "challenge", "challenging"]):
+        await message.channel.send(choose(responses["difficult"]))
+    if await multi_contains(message.content, ["storm", "bury the light"]):
+        await message.channel.send(choose(responses["storm"]))
+
+async def multi_contains(m="", x=None):
+    for i in x:
+        if i in m.lower():
+            return True
+    return False
 
 client.run(open('config/token.txt', 'r').readlines()[0].strip())
