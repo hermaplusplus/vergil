@@ -12,6 +12,10 @@ intents.messages = True
 
 client = discord.Client(intents=intents)
 
-
+@client.event
+async def on_ready():
+    print(f'Logged in successfully as {client.user}')
+    client.activity = discord.Activity(type=discord.ActivityType.competing, name='the Qliphoth')
+    await client.change_presence(activity=client.activity)
 
 client.run(open('config/token.txt', 'r').readlines()[0].strip())
