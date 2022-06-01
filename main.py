@@ -39,8 +39,10 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'Logged in successfully as {client.user}')
-    client.activity = discord.Activity(type=discord.ActivityType.competing, name='the Qliphoth')
-    await client.change_presence(activity=client.activity)
+    await client.change_presence(activity=discord.Activity(
+        type=discord.ActivityType.competing,
+        name = 'the Qliphoth'
+    ))
 
 @client.event
 async def on_message(message):
