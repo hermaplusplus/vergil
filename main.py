@@ -25,7 +25,7 @@ responses = {
     "power" : ["**I've come to retrieve my power.\nYou can't handle it.**",
                "**This is the power of Sparda.**",
                "**I need more power!**",
-               "**My power shall be absolute!",
+               "**My power shall be absolute!**",
                "**Power...**",
                "**This...**\n**Is...**\n***Power!***"],
     #"challenge" : ["**You are not worthy as my opponent.**"],
@@ -39,8 +39,10 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'Logged in successfully as {client.user}')
-    client.activity = discord.Activity(type=discord.ActivityType.competing, name='the Qliphoth')
-    await client.change_presence(activity=client.activity)
+    await client.change_presence(activity=discord.Activity(
+        type=discord.ActivityType.competing,
+        name = 'the Qliphoth'
+    ))
 
 @client.event
 async def on_message(message):
