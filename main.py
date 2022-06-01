@@ -25,7 +25,7 @@ responses = {
     "power" : ["**I've come to retrieve my power.\nYou can't handle it.**",
                "**This is the power of Sparda.**",
                "**I need more power!**",
-               "**My power shall be absolute!",
+               "**My power shall be absolute!**",
                "**Power...**",
                "**This...**\n**Is...**\n***Power!***"],
     #"challenge" : ["**You are not worthy as my opponent.**"],
