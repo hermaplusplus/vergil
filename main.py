@@ -28,7 +28,6 @@ responses = {
                ("**My power shall be absolute!**", 1)
                ("**Power...**", 1)
                ("**This...**\n**Is...**\n***Power!***", 1)],
-    #"challenge" : ["**You are not worthy as my opponent.**"],
     "difficult" : [("**`Easy mode is now selectable.`**", 1)
                    ("https://files.herma.moe/vergil/easymode.jpg", 1)],
     "storm" : [("***I AM THE STORM THAT IS APPROACHING!***", 1)]
@@ -54,8 +53,6 @@ async def on_message(message):
         await message.channel.send(choose(responses["bedtime"]))
     if await multi_contains(message.content, ["power", "powe",]):
         await message.channel.send(choose(responses["power"]))
-    #if await multi_contains(message.content, ["challenge", "challege"]):
-    #    await message.channel.send(choose(responses["challenge"]))
     if await multi_contains(message.content, ["difficult", "hard", "challenge", "challenging"]):
         await message.channel.send(choose(responses["difficult"]))
     if await multi_contains(message.content, ["storm", "bury the light"]):
