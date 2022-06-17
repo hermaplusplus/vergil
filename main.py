@@ -32,6 +32,8 @@ responses = {
     "difficult" : ["**`Easy mode is now selectable.`**",
                    "https://files.herma.moe/vergil/easymode.jpg"],
     "storm" : ["***I AM THE STORM THAT IS APPROACHING!***"]
+    "provoke" : ["**PROVOKING!**"]
+    "black" : ["**BLACK CLOUDS IN ISOLATION**"]
 }
 
 client = discord.Client(intents=intents)
