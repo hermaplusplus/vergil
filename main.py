@@ -17,19 +17,19 @@ intents.messages = True
 
 responses = {
     "motivation" : [("**Where's your motivation?**", 1),
-                    ("**Show me your motivation!**", 1),
+                    ("**Show me your motivation!**", 3),
                     ("**Now I'm motivated!**", 1),
-                    ("**Now I'm a little motivated!**", 1)],
-    "bedtime" : [("**It's past your bedtime!**", 1),
+                    ("**Now I'm a little motivated!**", 2)],
+    "bedtime" : [("**It's past your bedtime!**", 9),
                  ("https://files.herma.moe/vergil/bedtime.jpg", 1)],
     "power" : [("**I've come to retrieve my power.\nYou can't handle it.**", 1),
                ("**This is the power of Sparda.**", 1),
-               ("**I need more power!**", 1),
-               ("**My power shall be absolute!**", 1),
-               ("**Power...**", 1),
-               ("**This...**\n**Is...**\n***Power!***", 1)],
+               ("**I need more power!**", 3),
+               ("**My power shall be absolute!**", 2),
+               ("**Power...**", 4),
+               ("**This...**\n**Is...**\n***Power!***", 2)],
     "difficult" : [("**`Easy mode is now selectable.`**", 1),
-                   ("https://files.herma.moe/vergil/easymode.jpg", 1)],
+                   ("https://files.herma.moe/vergil/easymode.jpg", 9)],
     "storm" : [("***I AM THE STORM THAT IS APPROACHING!***", 1)]
 }
 
