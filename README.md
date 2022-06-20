@@ -15,3 +15,5 @@ The bot will post relevant responses when users send messages containing certain
 * `power`
 * `difficult`, `hard`, `challenging`
 * `storm`, `bury the light`
+* `curious`, `interesting`, `strange`, `wtf`
+* 
