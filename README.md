@@ -3,6 +3,8 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/hermaplusplus/vergil?style=for-the-badge)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/hermaplusplus/vergil?style=for-the-badge)
 
+### [Invite the Bot Here!](https://discord.com/oauth2/authorize?client_id=977061431361024040&permissions=414464723008&scope=bot%20applications.commands)
+
 ## About
 
 This bot was created to jokingly reference the character Vergil from the [Devil May Cry](https://en.wikipedia.org/wiki/Devil_May_Cry) game series.
