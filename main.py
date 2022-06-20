@@ -1,7 +1,7 @@
 import discord
 import logging
 import os
-from random import choice as choose
+from random import choices as choose
 from datetime import datetime
 
 logger = logging.getLogger('discord')
@@ -48,15 +48,20 @@ async def on_message(message):
     if message.author == client.user:
         return
     if await multi_contains(message.content, ["motivation", "motivatiob", "motivatio", "motivated", "motive", "motiv"]):
-        await message.channel.send(choose(responses["motivation"]))
+        await message.channel.send(choose([i[0] for i in responses["motivation"]],
+                                          weights=[i[1] for i in responses["motivation"]])[0])
     if await multi_contains(message.content, ["bedtime", "bedtim", "bed time", "bed", "bed tim", "sleep", "slep", "good night", "goodnight"]):
-        await message.channel.send(choose(responses["bedtime"]))
+        await message.channel.send(choose([i[0] for i in responses["bedtime"]],
+                                          weights=[i[1] for i in responses["bedtime"]])[0])
     if await multi_contains(message.content, ["power", "powe",]):
-        await message.channel.send(choose(responses["power"]))
+        await message.channel.send(choose([i[0] for i in responses["power"]],
+                                          weights=[i[1] for i in responses["power"]])[0])
     if await multi_contains(message.content, ["difficult", "hard", "challenge", "challenging"]):
-        await message.channel.send(choose(responses["difficult"]))
+        await message.channel.send(choose([i[0] for i in responses["difficult"]],
+                                          weights=[i[1] for i in responses["difficult"]])[0])
     if await multi_contains(message.content, ["storm", "bury the light"]):
-        await message.channel.send(choose(responses["storm"]))
+        await message.channel.send(choose([i[0] for i in responses["storm"]],
+                                          weights=[i[1] for i in responses["storm"]])[0])
 
 async def multi_contains(m="", x=None):
     for i in x:
