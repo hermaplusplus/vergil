@@ -30,7 +30,9 @@ responses = {
                ("**This...**\n**Is...**\n***Power!***", 2)],
     "difficult" : [("**`Easy mode is now selectable.`**", 1),
                    ("https://files.herma.moe/vergil/easymode.jpg", 9)],
-    "storm" : [("***I AM THE STORM THAT IS APPROACHING!***", 1)]
+    "storm" : [("***I AM THE STORM THAT IS APPROACHING!***", 1)],
+    "curious" : [("**This is... curious.**", 9),
+                 ("https://files.herma.moe/vergil/curious.jpg", 1),]
 }
 
 client = discord.Client(intents=intents)
@@ -62,6 +64,9 @@ async def on_message(message):
     if await multi_contains(message.content, ["storm", "bury the light"]):
         await message.channel.send(choose([i[0] for i in responses["storm"]],
                                           weights=[i[1] for i in responses["storm"]])[0])
+    if await multi_contains(message.content, ["curious", "curios", "strange", "interesting", "wtf", "what the fuck"]):
+        await message.channel.send(choose([i[0] for i in responses["curious"]],
+                                          weights=[i[1] for i in responses["curious"]])[0])
 
 async def multi_contains(m="", x=None):
     for i in x:
