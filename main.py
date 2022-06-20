@@ -1,7 +1,7 @@
 import discord
 import logging
 import os
-from random import choice as choose
+from random import choices as choose
 from datetime import datetime
 
 logger = logging.getLogger('discord')
@@ -16,22 +16,21 @@ intents = discord.Intents.default()
 intents.messages = True
 
 responses = {
-    "motivation" : ["**Where's your motivation?**",
-                    "**Show me your motivation!**",
-                    "**Now I'm motivated!**",
-                    "**Now I'm a little motivated!**"],
-    "bedtime" : ["**It's past your bedtime!**",
-                 "https://files.herma.moe/vergil/bedtime.jpg"],
-    "power" : ["**I've come to retrieve my power.\nYou can't handle it.**",
-               "**This is the power of Sparda.**",
-               "**I need more power!**",
-               "**My power shall be absolute!**",
-               "**Power...**",
-               "**This...**\n**Is...**\n***Power!***"],
-    #"challenge" : ["**You are not worthy as my opponent.**"],
-    "difficult" : ["**`Easy mode is now selectable.`**",
-                   "https://files.herma.moe/vergil/easymode.jpg"],
-    "storm" : ["***I AM THE STORM THAT IS APPROACHING!***"]
+    "motivation" : [("**Where's your motivation?**", 1),
+                    ("**Show me your motivation!**", 3),
+                    ("**Now I'm motivated!**", 1),
+                    ("**Now I'm a little motivated!**", 2)],
+    "bedtime" : [("**It's past your bedtime!**", 9),
+                 ("https://files.herma.moe/vergil/bedtime.jpg", 1)],
+    "power" : [("**I've come to retrieve my power.\nYou can't handle it.**", 1),
+               ("**This is the power of Sparda.**", 1),
+               ("**I need more power!**", 3),
+               ("**My power shall be absolute!**", 2),
+               ("**Power...**", 4),
+               ("**This...**\n**Is...**\n***Power!***", 2)],
+    "difficult" : [("**`Easy mode is now selectable.`**", 1),
+                   ("https://files.herma.moe/vergil/easymode.jpg", 9)],
+    "storm" : [("***I AM THE STORM THAT IS APPROACHING!***", 1)]
 }
 
 client = discord.Client(intents=intents)
@@ -49,17 +48,20 @@ async def on_message(message):
     if message.author == client.user:
         return
     if await multi_contains(message.content, ["motivation", "motivatiob", "motivatio", "motivated", "motive", "motiv"]):
-        await message.channel.send(choose(responses["motivation"]))
+        await message.channel.send(choose([i[0] for i in responses["motivation"]],
+                                          weights=[i[1] for i in responses["motivation"]])[0])
     if await multi_contains(message.content, ["bedtime", "bedtim", "bed time", "bed", "bed tim", "sleep", "slep", "good night", "goodnight"]):
-        await message.channel.send(choose(responses["bedtime"]))
+        await message.channel.send(choose([i[0] for i in responses["bedtime"]],
+                                          weights=[i[1] for i in responses["bedtime"]])[0])
     if await multi_contains(message.content, ["power", "powe",]):
-        await message.channel.send(choose(responses["power"]))
-    #if await multi_contains(message.content, ["challenge", "challege"]):
-    #    await message.channel.send(choose(responses["challenge"]))
+        await message.channel.send(choose([i[0] for i in responses["power"]],
+                                          weights=[i[1] for i in responses["power"]])[0])
     if await multi_contains(message.content, ["difficult", "hard", "challenge", "challenging"]):
-        await message.channel.send(choose(responses["difficult"]))
+        await message.channel.send(choose([i[0] for i in responses["difficult"]],
+                                          weights=[i[1] for i in responses["difficult"]])[0])
     if await multi_contains(message.content, ["storm", "bury the light"]):
-        await message.channel.send(choose(responses["storm"]))
+        await message.channel.send(choose([i[0] for i in responses["storm"]],
+                                          weights=[i[1] for i in responses["storm"]])[0])
 
 async def multi_contains(m="", x=None):
     for i in x:
