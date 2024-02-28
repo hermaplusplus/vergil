@@ -3,6 +3,7 @@ import logging
 import os
 from random import choices as choose
 from datetime import datetime
+import asyncio
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -15,6 +16,7 @@ logger.addHandler(handler)
 intents = discord.Intents.default()
 intents.messages = True
 intents.message_content = True
+intents.members = True
 
 responses = {
     "motivation" : [("**Where's your motivation?**", 1),
@@ -68,6 +70,25 @@ async def on_message(message):
     if await multi_contains(message.content, ["curious", "curios", "strange", "interesting", "wtf", "what the fuck"]):
         await message.channel.send(choose([i[0] for i in responses["curious"]],
                                           weights=[i[1] for i in responses["curious"]])[0])
+
+@client.event
+async def on_member_update(before, after):
+    if after.guild.id == 875815721920245810 and after.id == 188796089380503555 and True:
+        member = discord.utils.get(after.guild.members, id=188796089380503555)
+        role = discord.utils.get(after.guild.roles, id=1199848495318831104)
+        if role in member.roles:
+            await asyncio.sleep(120)
+            await member.remove_roles(role)
+    if after.guild.id == 875815721920245810 and after.id == 271739300532453376 and True:
+        member = discord.utils.get(after.guild.members, id=188796089380503555)
+        role1 = discord.utils.get(after.guild.roles, id=1195115549353594970)
+        role2 = discord.utils.get(after.guild.roles, id=888547811593977978)
+        if role1 in member.roles:
+            await asyncio.sleep(10)
+            await member.remove_roles(role1)
+        if role2 in member.roles:
+            await asyncio.sleep(10)
+            await member.remove_roles(role2)
 
 async def multi_contains(m="", x=None):
     for i in x:
