@@ -2,6 +2,7 @@ import discord
 import logging
 import os
 from random import choices as choose
+from random import uniform
 from datetime import datetime
 import asyncio
 
@@ -51,6 +52,8 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.author == client.user:
+        return
+    if uniform(0, 1) < 0.2:
         return
     if await multi_contains(message.content, ["motivation", "motivatiob", "motivatio", "motivated", "motive", "motiv"]):
         await message.channel.send(choose([i[0] for i in responses["motivation"]],
