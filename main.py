@@ -79,16 +79,16 @@ async def on_member_update(before, after):
         if role in member.roles:
             await asyncio.sleep(120)
             await member.remove_roles(role)
-    if after.guild.id == 875815721920245810 and after.id == 271739300532453376 and True:
-        member = discord.utils.get(after.guild.members, id=188796089380503555)
-        role1 = discord.utils.get(after.guild.roles, id=1195115549353594970)
-        role2 = discord.utils.get(after.guild.roles, id=888547811593977978)
-        if role1 in member.roles:
-            await asyncio.sleep(10)
-            await member.remove_roles(role1)
-        if role2 in member.roles:
-            await asyncio.sleep(10)
-            await member.remove_roles(role2)
+    #if after.guild.id == 875815721920245810 and after.id == 271739300532453376 and True:
+    #    member = discord.utils.get(after.guild.members, id=188796089380503555)
+    #    role1 = discord.utils.get(after.guild.roles, id=1195115549353594970)
+    #    role2 = discord.utils.get(after.guild.roles, id=888547811593977978)
+    #    if role1 in member.roles:
+    #        await asyncio.sleep(10)
+    #        await member.remove_roles(role1)
+    #    if role2 in member.roles:
+    #        await asyncio.sleep(10)
+    #        await member.remove_roles(role2)
 
 async def multi_contains(m="", x=None):
     for i in x:
