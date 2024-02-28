@@ -14,6 +14,7 @@ logger.addHandler(handler)
 
 intents = discord.Intents.default()
 intents.messages = True
+intents.message_content = True
 
 responses = {
     "motivation" : [("**Where's your motivation?**", 1),
