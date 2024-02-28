@@ -80,8 +80,9 @@ async def on_member_update(before, after):
         member = discord.utils.get(after.guild.members, id=188796089380503555)
         role = discord.utils.get(after.guild.roles, id=1199848495318831104)
         if role in member.roles:
-            await asyncio.sleep(120)
-            await member.remove_roles(role)
+            await asyncio.sleep(20)
+            if role in member.roles:
+                await member.remove_roles(role)
     #if after.guild.id == 875815721920245810 and after.id == 271739300532453376 and True:
     #    member = discord.utils.get(after.guild.members, id=188796089380503555)
     #    role1 = discord.utils.get(after.guild.roles, id=1195115549353594970)
