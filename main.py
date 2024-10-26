@@ -2,7 +2,9 @@ import discord
 import logging
 import os
 from random import choices as choose
+from random import uniform
 from datetime import datetime
+import asyncio
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -14,6 +16,8 @@ logger.addHandler(handler)
 
 intents = discord.Intents.default()
 intents.messages = True
+intents.message_content = True
+intents.members = True
 
 responses = {
     "motivation" : [("**Where's your motivation?**", 1),
@@ -28,8 +32,7 @@ responses = {
                ("**My power shall be absolute!**", 2),
                ("**Power...**", 4),
                ("**This...**\n**Is...**\n***Power!***", 2)],
-    "difficult" : [("**`Easy mode is now selectable.`**", 9),
-                   ("https://files.herma.moe/vergil/easymode.jpg", 1)],
+    "difficult" : [("**`Easy mode is now selectable.`**", 1)],
     "storm" : [("***I AM THE STORM THAT IS APPROACHING!***", 1)],
     "curious" : [("**This is... curious.**", 9),
                  ("https://files.herma.moe/vergil/curious.jpg", 1),]
@@ -49,10 +52,12 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+    if uniform(0, 1) > 0.1:
+        return
     if await multi_contains(message.content, ["motivation", "motivatiob", "motivatio", "motivated", "motive", "motiv"]):
         await message.channel.send(choose([i[0] for i in responses["motivation"]],
                                           weights=[i[1] for i in responses["motivation"]])[0])
-    if await multi_contains(message.content, ["bedtime", "bedtim", "bed time", "bed", "bed tim", "sleep", "slep", "good night", "goodnight"]):
+    if await multi_contains(message.content, ["bedtime", "bedtim", "bed time", "bed", "bed tim", "sleep", "slep", "good night", "goodnight"]) and not await multi_contains(message.content, ["embed"]):
         await message.channel.send(choose([i[0] for i in responses["bedtime"]],
                                           weights=[i[1] for i in responses["bedtime"]])[0])
     if await multi_contains(message.content, ["power", "powe",]):
