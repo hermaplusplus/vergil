@@ -32,8 +32,7 @@ responses = {
                ("**My power shall be absolute!**", 2),
                ("**Power...**", 4),
                ("**This...**\n**Is...**\n***Power!***", 2)],
-    "difficult" : [("**`Easy mode is now selectable.`**", 9),
-                   ("https://files.herma.moe/vergil/easymode.jpg", 1)],
+    "difficult" : [("**`Easy mode is now selectable.`**", 1)],
     "storm" : [("***I AM THE STORM THAT IS APPROACHING!***", 1)],
     "curious" : [("**This is... curious.**", 9),
                  ("https://files.herma.moe/vergil/curious.jpg", 1),]
