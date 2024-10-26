@@ -57,7 +57,7 @@ async def on_message(message):
     if await multi_contains(message.content, ["motivation", "motivatiob", "motivatio", "motivated", "motive", "motiv"]):
         await message.channel.send(choose([i[0] for i in responses["motivation"]],
                                           weights=[i[1] for i in responses["motivation"]])[0])
-    if await multi_contains(message.content, ["bedtime", "bedtim", "bed time", "bed", "bed tim", "sleep", "slep", "good night", "goodnight"]):
+    if await multi_contains(message.content, ["bedtime", "bedtim", "bed time", "bed", "bed tim", "sleep", "slep", "good night", "goodnight"]) and not await multi_contains(message.content, ["embed"]):
         await message.channel.send(choose([i[0] for i in responses["bedtime"]],
                                           weights=[i[1] for i in responses["bedtime"]])[0])
     if await multi_contains(message.content, ["power", "powe",]):
