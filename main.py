@@ -52,7 +52,7 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if uniform(0, 1) > 0.2:
+    if uniform(0, 1) > 0.1:
         return
     if await multi_contains(message.content, ["motivation", "motivatiob", "motivatio", "motivated", "motive", "motiv"]):
         await message.channel.send(choose([i[0] for i in responses["motivation"]],
